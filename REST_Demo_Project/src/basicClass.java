@@ -46,6 +46,8 @@ public class basicClass {
 		given().log().all().queryParam("key","qaclick123").queryParam("place_id", "6a30b840957f5da435072890cb34b20f")
 		.when().log().all().get("/maps/api/place/get/json").then().log().all().assertThat().statusCode(200)
 		.body("address", equalTo("70 Summer walk, USA"));
+		
+		System.out.println("First script is complete");
 	}
 
 }
