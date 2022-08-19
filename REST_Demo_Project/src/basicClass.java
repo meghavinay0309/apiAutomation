@@ -1,10 +1,8 @@
 import io.restassured.RestAssured;
+
 import io.restassured.path.json.JsonPath;
-
 import static org.hamcrest.Matchers.*;
-
 import files.payload;
-
 import static io.restassured.RestAssured.*;  //import all static packages from RestAssured in order to use them in code
 
 public class basicClass {
@@ -23,9 +21,14 @@ public class basicClass {
 		
 		//(1)to post the request(add place) by providing query param,header,target resource,request body
 		//and validate response body, fetch certain response json value(placeID value)
-		String responseString=given().log().all().queryParam("key","qaclick123").header("Content-Type","application/json")
-		.body(payload.addPlace()).when().post("/maps/api/place/add/json").then().assertThat().statusCode(200).body("scope", equalTo("APP"))
-		.header("server", "Apache/2.4.41 (Ubuntu)").extract().response().asPrettyString();
+		String responseString=given().log().all()
+									 .queryParam("key","qaclick123")
+									 .header("Content-Type","application/json")
+									 .body(payload.addPlace())
+							  .when().post("/maps/api/place/add/json")
+							  .then().assertThat().statusCode(200)
+							  .body("scope", equalTo("APP"))
+							  .header("server", "Apache/2.4.41 (Ubuntu)").extract().response().asPrettyString();
 		
 		
 		System.out.println("Response Body as String:" + responseString); 
