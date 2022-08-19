@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>apiAutomation</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>REST_Demo_Project/src/files/sampleCSV.csv</name>
+			<type>1</type>
+			<location>C:/Users/218995/Desktop/sampleCSV.csv</location>
+		</link>
+	</linkedResources>
+</projectDescription>
