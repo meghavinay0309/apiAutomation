@@ -7,6 +7,6 @@ And I submit POST request
 Then I should see response status code "200"
 Examples:
 |dataObject|
-|book.txt|
+|newData.txt|
 
 

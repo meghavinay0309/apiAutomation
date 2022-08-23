@@ -14,7 +14,7 @@ public class csvToJson {
 	public static List<Map<?, ?>> methodToConvertCSVToJSON(String fileName)
 	{
 		List<Map<?, ?>> list=new ArrayList<>();
-		File input = new File("+fileNAme+");
+		File input = new File(fileName);
 		// System.out.println(new File(".").getAbsolutePath()); //This line will tell you what the current directory is:
 		try {
 			CsvSchema csv = CsvSchema.emptySchema().withHeader();
