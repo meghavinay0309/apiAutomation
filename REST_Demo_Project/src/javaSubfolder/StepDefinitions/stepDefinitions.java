@@ -37,9 +37,9 @@ public class stepDefinitions {
 	public void i_submit_post_request() {
 			
 		String responseString = given().log().all()
-				.header("Content-Type", "application/json").body(requiredJSON)
-				.when()
-				.post("/posts")
+				.header("Content-Type", "application/json")
+				.body(requiredJSON)
+				.when().post("/posts")
 				.then().assertThat().statusCode(201).extract().response().asPrettyString();
 
 		System.out.println("Response Body as String:" + responseString);
@@ -53,9 +53,9 @@ public class stepDefinitions {
 
 	@Then("I should see response status code {string}")
 	public void i_should_see_response_status_code(String string) {
-		// Write code here that turns the phrase above into concrete actions
+		
 		System.out.println("****As of now not implemented****\n");
-		//throw new io.cucumber.java.PendingException();
+		
 	}
 	
 	
@@ -69,7 +69,8 @@ public class stepDefinitions {
 	@When("I submit  GET request")
 	public void i_submit_get_request() {
 		GET_ResponseJSON=given()
-		.when().log().all().get("/posts/1").then().body("body", equalTo("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"))
+		.when().log().all().get("/posts/1")
+		.then().body("body", equalTo("quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"))
 		.extract().response().asPrettyString();
 	}
 

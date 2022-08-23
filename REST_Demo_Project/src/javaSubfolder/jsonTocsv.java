@@ -1,3 +1,7 @@
+
+//This class has methods for
+//Taking input as String(json) and parsing it to a new csv file
+
 package javaSubfolder;
 import java.io.File;
 import java.io.IOException;
