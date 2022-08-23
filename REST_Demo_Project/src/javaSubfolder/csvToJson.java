@@ -1,3 +1,7 @@
+//This class has methods which:
+//Takes csv fileName as String input & converts it to JSON list of maps
+
+
 package javaSubfolder;
 import java.io.*;
 
@@ -13,6 +17,7 @@ public class csvToJson {
 	
 	public static List<Map<?, ?>> methodToConvertCSVToJSON(String fileName)
 	{
+		//This method takes csv fileName as String input & converts it to JSON list of maps
 		List<Map<?, ?>> list=new ArrayList<>();
 		File input = new File(fileName);
 		// System.out.println(new File(".").getAbsolutePath()); //This line will tell you what the current directory is:
@@ -51,6 +56,7 @@ public class csvToJson {
 		}
 	}
 	
+	//This method takes List of maps as input and converts it to a String
 	public static String convertListOfMapToJsonString(List<Map<?, ?>> myList)
 	{
 		List<JSONObject> jsonObj = new ArrayList<JSONObject>();
