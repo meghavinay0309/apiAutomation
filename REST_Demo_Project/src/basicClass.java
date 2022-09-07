@@ -1,3 +1,7 @@
+
+//********************Practice code********************
+//********************Not related to Framework********************
+
 import io.restassured.RestAssured;
 
 import io.restassured.path.json.JsonPath;
