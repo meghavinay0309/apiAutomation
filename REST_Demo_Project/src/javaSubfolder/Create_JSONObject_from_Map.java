@@ -1,5 +1,7 @@
 
 
+//********************Practice code********************
+//********************Not related to Framework********************
 
 //This class demonstrates  
 // 1. Creating a Map object 
