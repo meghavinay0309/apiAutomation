@@ -14,6 +14,7 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import javaSubfolder.RequestBuilder;
+import javaSubfolder.ResponseMatcher;
 import javaSubfolder.booksPOJO;
 import javaSubfolder.csvToJson;
 import javaSubfolder.jsonTocsv;
@@ -25,6 +26,12 @@ public class stepDefinitions {
 	
 	private String requiredJSON;
 	private String GET_ResponseJSON;
+	
+	//Attributes for API_GET_Request
+	private String header_key;
+	private String header_value;
+	private String GET_request;
+	private String GET_Resource;
 	
 	//POST request using CSV data & POJO
 	private List<Map<?, ?>> csvToJSONListOfMaps;
@@ -154,6 +161,43 @@ public class stepDefinitions {
 	@Then("I should see Unique ID")
 	public void i_should_see_unique_id() {
 	    
+	}
+	
+	//New API_GET_Request
+	@Given("We set up test environment for {string} test for {string}")
+	public void we_set_up_test_environment_for_test_for(String string, String string2) {
+		RestAssured.baseURI = string2;   
+	}
+
+	@Given("We have header data as {string} and {string}")
+	public void we_have_header_data_as_and(String key, String value) {
+		header_key=key;
+	    header_value=value;
+	   
+	}
+
+	@When("We make Get request to the API at endpoint {string}")
+	public void we_make_get_request_to_the_api_at_endpoint(String endpointResource) {
+		GET_Resource=endpointResource;
+		GET_ResponseJSON=given().log().all().header(header_key,header_value)
+				         .when().log().all().get(GET_Resource)
+				         .then().extract().response().asPrettyString();
+		
+	}
+
+	@Then("We should see that the response should contain {string}")
+	public void we_should_see_that_the_response_should_contain(String expectedValue) {
+		JsonPath jsonObject = new JsonPath(GET_ResponseJSON);		
+        System.out.println(ResponseMatcher.verifyJSONParameter(jsonObject, expectedValue));
+        
+		
+	}
+
+	@Then("The response status code code must be {string}")
+	public void the_response_status_code_code_must_be(String string) {
+		given().log().all().header(header_key,header_value)
+        .when().log().all().get(GET_Resource)
+        .then().assertThat().statusCode(200);
 	}
 
 }

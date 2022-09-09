@@ -5,7 +5,10 @@ import io.cucumber.testng.CucumberOptions;
 
 
 
-@CucumberOptions(features = "./src/Features", glue= "javaSubfolder.StepDefinitions",   plugin = { "pretty",  "html:Reports/cucumber-pretty" })
+@CucumberOptions(features = "./src/Features", 
+				 glue= "javaSubfolder.StepDefinitions",   
+				 plugin = { "pretty",  "html:Reports/cucumber-pretty" },
+				 tags="@getRequest")
 public class testRunner extends AbstractTestNGCucumberTests {
 
 }
